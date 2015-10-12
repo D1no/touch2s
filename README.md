@@ -20,7 +20,7 @@ Clone this project to start a simple project using Meteor, React.js and Webpack.
 - Give access to NPM by using packages.json
 
 ## How does it work?
-Webpack needs one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/server/webpack.conf.js) file for the client and one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/client/webpack.conf.js) for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point.
+Webpack needs one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/client/webpack.conf.js) file for the client and one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/server/webpack.conf.js) for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point.
 
 The server entry point in the project is at [`server/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/server/entry.js). Everything that you want to load on your Meteor server, they have to be imported or required in some way.
 
