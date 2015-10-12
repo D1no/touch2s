@@ -1,8 +1,12 @@
 # kickstart-simple by thereactivestack
 
-Kickstart a simple project fast! Clone this project to start a simple project using Meteor, React.js and Webpack.
+Kickstart a simple project fast!
 
-`git clone https://github.com/thereactivestack/kickstart-simple.git`
+Clone this project to start a simple project using Meteor, React.js and Webpack.
+
+1. `git clone https://github.com/thereactivestack/kickstart-simple.git`
+1. `cd kickstart-simple`
+1. `meteor`
 
 ## The stack & features
 - Include the simple todo app example
@@ -13,6 +17,7 @@ Kickstart a simple project fast! Clone this project to start a simple project us
 - Webpack (bundle your app / assets and send them to Meteor)
 - Hot-reload with no page refresh in development mode
 - Optimize your code in production mode
+- Give access to NPM by using packages.json
 
 ## How does it work?
 Webpack needs one `webpack.conf.js` file for the client and one for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point.
@@ -20,6 +25,8 @@ Webpack needs one `webpack.conf.js` file for the client and one for the server. 
 The server entry point in the project is at `server/entry.js`. Everything that you want to load on your Meteor server, they have to be imported or required in some way.
 
 The client entry point in the project is at `client/entry.js` and work the same way as on the server, except it is run on the browser or Cordova.
+
+You can use any package coming from NPM by adding it to `packages.json`.
 
 Go look at them, they are simple!
 
