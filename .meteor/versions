@@ -17,7 +17,7 @@ callback-hook@1.0.4
 check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.10
-cosmos:browserify@0.5.0
+cosmos:browserify@0.8.0
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.1
@@ -72,8 +72,8 @@ react-runtime-dev@0.13.3_7
 react-runtime-prod@0.13.3_6
 reactive-dict@1.1.2
 reactive-var@1.0.6
-reactrouter:react-router@0.1.8
-reactrouter:react-router-ssr@0.2.6
+reactrouter:react-router@0.1.9
+reactrouter:react-router-ssr@0.2.7
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
@@ -93,5 +93,5 @@ underscore@1.0.4
 url@1.0.5
 webapp@1.2.2
 webapp-hashing@1.0.5
-webpack:reload@0.1.0
-webpack:webpack@0.1.0
+webpack:reload@0.1.2
+webpack:webpack@0.1.1

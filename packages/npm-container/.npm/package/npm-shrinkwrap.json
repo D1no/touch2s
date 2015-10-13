@@ -2825,10 +2825,18 @@
           }
         },
         "fbjs": {
-          "version": "0.3.1",
+          "version": "0.3.2",
           "dependencies": {
             "core-js": {
               "version": "1.2.1"
+            },
+            "loose-envify": {
+              "version": "1.0.0",
+              "dependencies": {
+                "js-tokens": {
+                  "version": "1.0.1"
+                }
+              }
             },
             "promise": {
               "version": "7.0.4",
