@@ -2,6 +2,8 @@
 
 Kickstart a simple project fast!
 
+If you would like a more sophisticated kickstart with code splitting, see the [kickstart-hugeapp project](https://github.com/thereactivestack/kickstart-hugeapp).
+
 Clone this project to start a simple project using Meteor, React.js and Webpack.
 
 1. `git clone https://github.com/thereactivestack/kickstart-simple.git`
