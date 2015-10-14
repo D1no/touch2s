@@ -1,4 +1,4 @@
-import Tasks from '../collections/Tasks';
+import Tasks from 'todo/collections/Tasks';
 
 // This code only runs on the server
 Meteor.publish('tasks', function () {

@@ -1,5 +1,5 @@
 // Methods for optimistic updates
-require('../server/todo-methods');
+require('todo/todo-methods');
 
 require('./routes');
 
