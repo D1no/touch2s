@@ -10,6 +10,10 @@ Clone this project to start a simple project using Meteor, React.js and Webpack.
 1. `cd kickstart-simple`
 1. `meteor`
 
+## Windows fix
+You have to remove the unix symbolic link node_modules and create a Windows symbolic link:
+`MKLINK /D node_modules packages\npm-container\.npm\package\node_modules`
+
 ## The stack & features
 - Include the simple todo app example
 - ES6 modules
