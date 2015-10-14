@@ -1,3 +1,5 @@
+import ReactRouterSSR from 'react-router-ssr';
+
 require('todo/todo-methods');
 require('todo/server/todo-subscriptions');
 
