@@ -5,7 +5,7 @@ import ReactMeteorData from 'react-meteor-data';
 import TodoHeader from './components/TodoHeader';
 import TodoList from './components/TodoList';
 
-import Tasks from 'todo/collections/Tasks';
+import Tasks from 'TodoApp/collections/Tasks';
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class TodoMain extends Component {
