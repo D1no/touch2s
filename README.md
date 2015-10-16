@@ -17,7 +17,7 @@ You have to remove the unix symbolic link node_modules and create a Windows symb
 1. Run meteor once so that the node_modules folder is created (it will fail)
 1. Set the `packages\npm-container\.npm\package\node_modules` folder as the source with right-click
 1. Remove the node_modules file in the root folder, drop the symbolic link and rename it `node_modules`
-    
+
 You can also use the command-line:<br />
 `MKLINK /D node_modules packages\npm-container\.npm\package\node_modules`
 
@@ -33,11 +33,11 @@ You can also use the command-line:<br />
 - Give access to NPM by using packages.json
 
 ## How does it work?
-Webpack needs one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/modules/entry/client/webpack.conf.js) file for the client and one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/modules/entry/server/webpack.conf.js) for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point. You can also have a [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/modules/entry/webpack.conf.js) that is shared between client and server for common settings.
+Webpack needs one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/client/webpack.conf.js) file for the client and one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/webpack.conf.js) for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point. You can also have a [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/webpack.conf.js) that is shared between client and server for common settings.
 
-The server entry point in the project is at [`modules/entry/server/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/modules/entry/server/entry.js). Everything that you want to load on your Meteor server, they have to be imported or required in some way.
+The server entry point in the project is at [`modules/entry/server/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js). Everything that you want to load on your Meteor server, they have to be imported or required in some way.
 
-The client entry point in the project is at [`modules/entry/client/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/modules/entry/server/entry.js) and work the same way as on the server, except it is run on the browser or Cordova.
+The client entry point in the project is at [`modules/entry/client/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js) and work the same way as on the server, except it is run on the browser or Cordova.
 
 You can use any package coming from NPM by adding it to [`packages.json`](https://github.com/thereactivestack/kickstart-simple/blob/master/packages.json).
 
