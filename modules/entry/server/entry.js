@@ -1,7 +1,5 @@
-import ReactRouterSSR from 'react-router-ssr';
-
-require('TodoApp/todo-methods');
-require('TodoApp/server/todo-subscriptions');
+import 'TodoApp/todo-methods';
+import 'TodoApp/server/todo-subscriptions'
 
 // Do server-rendering only in proudction mode
 if (process.env.NODE_ENV === 'production') {

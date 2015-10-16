@@ -1,5 +1,4 @@
 import { Component, PropTypes } from 'react';
-import BlazeToReact from 'blaze-to-react';
 
 const LoginButtons = BlazeToReact('loginButtons');
 

@@ -2,12 +2,9 @@ var webpack = require('webpack');
 
 module.exports = {
   externals: {
-    // Add global variables you would like to import
+    // Make sure we use Meteor package for react and react-router
     'react': 'React',
-    'react-router': 'ReactRouter',
-    'react-router-ssr': 'ReactRouterSSR',
-    'react-meteor-data': 'ReactMeteorData',
-    'blaze-to-react': 'BlazeToReact'
+    'react-router': 'ReactRouter'
   },
   devServer: {
     // You can change this to your server IP address to access it remotely
