@@ -72,8 +72,8 @@ react-runtime-dev@0.13.3_7
 react-runtime-prod@0.13.3_6
 reactive-dict@1.1.2
 reactive-var@1.0.6
-reactrouter:react-router@0.1.9
-reactrouter:react-router-ssr@0.2.8
+reactrouter:react-router@0.1.10
+reactrouter:react-router-ssr@0.2.9
 reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
@@ -95,4 +95,4 @@ webapp@1.2.2
 webapp-hashing@1.0.5
 webpack:npmworkaround@0.1.0
 webpack:reload@0.1.4
-webpack:webpack@0.1.11
+webpack:webpack@0.1.12
