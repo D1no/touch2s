@@ -11,7 +11,7 @@ module.exports = {
     host: 'localhost'
   },
   resolve: {
-    root: __dirname + '/..',
+    root: __dirname + '/../modules',
     extensions: ['', '.js', '.jsx', '.json', '.css', '.scss']
   }
 };
