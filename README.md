@@ -10,17 +10,6 @@ Clone this project to start a simple project using Meteor, React.js and Webpack.
 1. `cd kickstart-simple`
 1. `meteor`
 
-## Windows fix
-You have to remove the unix symbolic link node_modules and create a Windows symbolic link.
-
-1. Install [this tool](http://www.howtogeek.com/howto/16226/complete-guide-to-symbolic-links-symlinks-on-windows-or-linux/) to easily create symbolic link on Windows
-1. Run meteor once so that the node_modules folder is created (it will fail)
-1. Set the `packages\npm-container\.npm\package\node_modules` folder as the source with right-click
-1. Remove the node_modules file in the root folder, drop the symbolic link and rename it `node_modules`
-
-You can also use the command-line:<br />
-`MKLINK /D node_modules packages\npm-container\.npm\package\node_modules`
-
 ## The stack & features
 - Include the simple todo app example
 - ES6 modules
@@ -57,12 +46,3 @@ You can use meteor run, meteor build, mup or anything working with Meteor.
 Then, you can run `bundle/main.js` without it.
 
 *We are going to remove this once we have a fix that detect Meteor production mode in a compiler*
-
-# Troubleshooting
-
-## Module build failed: ReferenceError: Unknown plugin "react-transform"
-It seems like the babel plugins are not looking into the correct directory and their is no setting to fix that. However, what you can do is create a symbolic link in your project root to the correct folder:
-
-`ln -s packages/npm-container/.npm/package/node_modules`
-
-*We are going to remove this step once we have a fix*
