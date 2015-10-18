@@ -95,4 +95,4 @@ webapp@1.2.2
 webapp-hashing@1.0.5
 webpack:npmworkaround@0.1.0
 webpack:reload@0.1.4
-webpack:webpack@0.1.14
+webpack:webpack@0.1.20
