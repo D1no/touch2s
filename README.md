@@ -45,4 +45,7 @@ You can use meteor run, meteor build, mup or anything working with Meteor.
 
 Then, you can run `bundle/main.js` without it.
 
+## Deploy with Meteor-up
+`NODE_ENV=production mup deploy`
+
 *We are going to remove this once we have a fix that detect Meteor production mode in a compiler*
