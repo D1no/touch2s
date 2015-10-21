@@ -46,10 +46,8 @@ localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
-meteorhacks:async@1.0.0
 meteorhacks:fast-render@2.10.0
 meteorhacks:inject-data@1.4.1
-meteorhacks:npm@1.5.0
 meteorhacks:picker@1.0.3
 minifiers@1.1.7
 minimongo@1.0.10
@@ -58,7 +56,6 @@ mobile-status-bar@1.0.6
 mongo@1.1.2
 mongo-id@1.0.1
 npm-bcrypt@0.7.8_2
-npm-container@1.2.0
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
@@ -95,4 +92,4 @@ webapp@1.2.2
 webapp-hashing@1.0.5
 webpack:npmworkaround@0.1.0
 webpack:reload@0.1.4
-webpack:webpack@0.1.20
+webpack:webpack@0.2.0

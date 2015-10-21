@@ -19,10 +19,8 @@ react-runtime
 react-meteor-data
 reactrouter:react-router-ssr
 thereactivestack:blazetoreact
-meteorhacks:npm
 
 
-npm-container
 webpack:webpack
 accounts-ui
 accounts-password

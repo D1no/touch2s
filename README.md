@@ -32,20 +32,14 @@ You can use any package coming from NPM by adding it to [`packages.json`](https:
 
 Go look at them, they are simple!
 
-## Production
-To run or build in production, you need to set your environment variable NODE_ENV to production.
-
+# Production
 You can use meteor run, meteor build, mup or anything working with Meteor.
 
 ## Run in production mode
-`NODE_ENV=production meteor run --production`
+`meteor run --production`
 
 ## Build for production
-`NODE_ENV=production meteor build .`
-
-Then, you can run `bundle/main.js` without it.
+`meteor build .`
 
 ## Deploy with Meteor-up
-`NODE_ENV=production mup deploy`
-
-*We are going to remove this once we have a fix that detect Meteor production mode in a compiler*
+`mup deploy`
