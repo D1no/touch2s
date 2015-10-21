@@ -28,7 +28,7 @@ The server entry point in the project is at [`modules/entry/server/entry.js`](ht
 
 The client entry point in the project is at [`modules/entry/client/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js) and work the same way as on the server, except it is run on the browser or Cordova.
 
-You can use any package coming from NPM by adding it to [`packages.json`](https://github.com/thereactivestack/kickstart-simple/blob/master/packages.json).
+You can use any package coming from NPM by adding it to [`webpack.packages.json`](https://github.com/thereactivestack/kickstart-simple/blob/master/webpack.packages.json).
 
 Go look at them, they are simple!
 
