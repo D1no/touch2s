@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   externals: {
@@ -11,7 +12,7 @@ module.exports = {
     host: 'localhost'
   },
   resolve: {
-    root: __dirname + '/../modules',
+    root: path.join(__dirname, '..', 'modules'),
     extensions: ['', '.js', '.jsx', '.json', '.css', '.scss']
   }
 };
