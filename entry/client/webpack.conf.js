@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 var babelSettings = { stage: 0 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production' && !process.env.IS_MIRROR) {
   babelSettings.plugins = ['react-transform'];
   babelSettings.extra = {
     'react-transform': {

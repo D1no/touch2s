@@ -24,3 +24,5 @@ thereactivestack:blazetoreact
 webpack:webpack
 accounts-ui
 accounts-password
+sanjo:jasmine
+velocity:html-reporter
