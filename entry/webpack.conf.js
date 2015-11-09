@@ -3,7 +3,8 @@ var path = require('path');
 
 module.exports = {
   externals: {
-    // Make sure we use Meteor package for react and react-router
+    // Make sure we use Meteor package for jQuery, react and react-router
+    'jquery': '$',
     'react': 'React',
     'react-router': 'ReactRouter',
     'react-dom': 'ReactDOM',
