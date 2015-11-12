@@ -8,13 +8,13 @@ if (process.env.NODE_ENV === 'production') {
 
   require('../client/routes');
 } else {
-  if (process.env.FRAMEWORK === 'jasmine-client-integration') {
-    // Add fixtures required for integration tests
-    const context = require.context('../../modules', true, /\/server\/(.*)\/integration\/(.*)\-fixtures\.jsx?$/);
-    context.keys().forEach(context);
-  } else {
-    // Run unit tests on server
-    const context = require.context('../../modules', true, /\/server\/(.*)\/unit\/(.*)\-test\.jsx?$/);
+  // Add fixtures required for integration tests
+  const context = require.context('../../modules', true, /\/server\/(.*)\/integration\/(.*)\-fixtures\.jsx?$/);
+  context.keys().forEach(context);
+
+  if (process.env.FRAMEWORK === 'jasmine-server-integration') {
+    // Run integration tests on server
+    const context = require.context('../../modules', true, /\/server\/(.*)\/integration\/(.*)\-test\.jsx?$/);
     context.keys().forEach(context);
   }
 }
