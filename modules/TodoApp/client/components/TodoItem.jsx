@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import style from 'TodoApp/client/css/TodoApp.import.css';
 
 export default class TodoItem extends Component {
   static propTypes = {
@@ -24,7 +25,7 @@ export default class TodoItem extends Component {
     }
 
     return (
-      <button className="toggle-private" onClick={this.handleSetPrivate.bind(this)}>
+      <button className={style.togglePrivate} onClick={this.handleSetPrivate.bind(this)}>
         {this.props.task.private ? 'Private' : 'Public'}
       </button>
     );
@@ -34,19 +35,19 @@ export default class TodoItem extends Component {
     let itemClass = '';
 
     if (this.props.task.checked) {
-      itemClass += 'checked';
+      itemClass += style.checked;
     }
 
     if (this.props.task.private) {
-      itemClass += ' private';
+      itemClass += ' ' + style.private;
     }
 
     return (
       <li className={itemClass}>
-        <button className="delete" onClick={this.handleDelete.bind(this)}>&times;</button>
-        <input type="checkbox" checked={this.props.task.checked} onChange={this.handleChecked.bind(this)} className="toggle-checked" />
+        <button className={style.delete} onClick={this.handleDelete.bind(this)}>&times;</button>
+        <input type="checkbox" checked={this.props.task.checked} onChange={this.handleChecked.bind(this)} className={style.toggleChecked} />
         {this.renderTogglePrivate()}
-        <span className="text"><strong>{this.props.task.username}</strong> - {this.props.task.text}</span>
+        <span className={style.text}><strong>{this.props.task.username}</strong> - {this.props.task.text}</span>
       </li>
     );
   }

@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import style from 'TodoApp/client/css/TodoApp.import.css';
 
 const LoginButtons = BlazeToReact('loginButtons');
 
@@ -28,7 +29,7 @@ export default class TodoHeader extends Component {
 
     if (Meteor.userId()) {
       form = (
-        <form className="new-task" onSubmit={this.handleSubmit.bind(this)}>
+        <form className={style.newTask} onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" name="text" placeholder="Type to add new tasks" />
         </form>
       );
@@ -41,7 +42,7 @@ export default class TodoHeader extends Component {
           Todo List ({this.props.incompleteCount})
         </h1>
 
-        <label className="hide-completed">
+        <label className={style.hideCompleted}>
           <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
           Hide Completed Tasks
         </label>

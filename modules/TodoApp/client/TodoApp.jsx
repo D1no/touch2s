@@ -5,10 +5,6 @@ export default class TodoApp extends Component {
     children: PropTypes.any.isRequired
   }
 
-  componentWillMount() {
-    require('./css/TodoApp.import.css');
-  }
-
   render() {
     return (
       <div>

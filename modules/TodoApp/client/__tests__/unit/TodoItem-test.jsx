@@ -1,5 +1,6 @@
 import TestUtils from 'react-addons-test-utils';
 import TodoItem from 'TodoApp/client/components/TodoItem';
+import style from 'TodoApp/client/css/TodoApp.import.css';
 
 describe('TodoItem', () => {
   it('should display the task text and owner name', () => {
@@ -12,7 +13,7 @@ describe('TodoItem', () => {
       <TodoItem task={task} />
     );
 
-    const textEl = TestUtils.findRenderedDOMComponentWithClass(root, 'text');
+    const textEl = TestUtils.findRenderedDOMComponentWithClass(root, style.text);
 
     expect(textEl.innerText).toContain('Test Name');
     expect(textEl.innerText).toContain('Test task');
@@ -23,7 +24,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ checked: true }} />
     );
 
-    expect(ReactDOM.findDOMNode(root).className).toContain('checked');
+    expect(ReactDOM.findDOMNode(root).className).toContain(style.checked);
   });
 
   it('should highlight a private task', () => {
@@ -31,7 +32,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ private: true }} />
     );
 
-    expect(ReactDOM.findDOMNode(root).className).toContain('private');
+    expect(ReactDOM.findDOMNode(root).className).toContain(style.private);
   });
 
   it('should hide the private toggle button if not the owner', () => {
@@ -41,7 +42,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ owner: '1234' }} />
     );
 
-    const toggleEl = TestUtils.scryRenderedDOMComponentsWithClass(root, 'toggle-private');
+    const toggleEl = TestUtils.scryRenderedDOMComponentsWithClass(root, style.togglePrivate);
     expect(toggleEl.length).toEqual(0);
   });
 
@@ -52,7 +53,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ owner: '111' }} />
     );
 
-    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, 'toggle-private');
+    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, style.togglePrivate);
     expect(toggleEl.innerText).toBe('Public');
   });
 
@@ -63,7 +64,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ owner: '111', private: true }} />
     );
 
-    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, 'toggle-private');
+    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, style.togglePrivate);
     expect(toggleEl.innerText).toBe('Private');
   });
 
@@ -75,7 +76,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ _id: '222', owner: '111', private: true }} />
     );
 
-    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, 'toggle-private');
+    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, style.togglePrivate);
     TestUtils.Simulate.click(toggleEl);
 
     expect(Meteor.call).toHaveBeenCalledWith('setPrivate', '222', false);
@@ -89,7 +90,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ _id: '222', owner: '111' }} />
     );
 
-    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, 'toggle-private');
+    const toggleEl = TestUtils.findRenderedDOMComponentWithClass(root, style.togglePrivate);
     TestUtils.Simulate.click(toggleEl);
 
     expect(Meteor.call).toHaveBeenCalledWith('setPrivate', '222', true);
@@ -103,7 +104,7 @@ describe('TodoItem', () => {
       <TodoItem task={{ _id: '222', owner: '111' }} />
     );
 
-    const deleteEl = TestUtils.findRenderedDOMComponentWithClass(root, 'delete');
+    const deleteEl = TestUtils.findRenderedDOMComponentWithClass(root, style.delete);
     TestUtils.Simulate.click(deleteEl);
 
     expect(Meteor.call).toHaveBeenCalledWith('deleteTask', '222');

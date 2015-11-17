@@ -1,6 +1,7 @@
 import TestUtils from 'react-addons-test-utils';
 import * as userHelpers from 'TestHelpers/client/user';
 import * as domHelpers from 'TestHelpers/client/dom';
+import style from 'TodoApp/client/css/TodoApp.import.css';
 
 describe('Todo', () => {
   beforeEach(done => {
@@ -29,14 +30,14 @@ describe('Todo', () => {
 
     domHelpers.waitsFor('li', 1, taskEl => {
       expect(formEl[0].text.value).toEqual('');
-      expect(taskEl.find('.text').text()).toEqual('test-user - ' + testText1);
+      expect(taskEl.find(`.${style.text}`).text()).toEqual('test-user - ' + testText1);
 
       formEl[0].text.value = testText2;
       TestUtils.Simulate.submit(formEl[0], { target: formEl[0] });
 
       domHelpers.waitsFor('li', 2, taskEl2 => {
         expect(formEl[0].text.value).toEqual('');
-        expect(taskEl2.first().find('.text').text()).toEqual('test-user - ' + testText2);
+        expect(taskEl2.first().find(`.${style.text}`).text()).toEqual('test-user - ' + testText2);
         done();
       })
     });
@@ -52,7 +53,7 @@ describe('Todo', () => {
     TestUtils.Simulate.submit(formEl[0], { target: formEl[0] });
 
     domHelpers.waitsFor('li', 1, taskEl => {
-      TestUtils.Simulate.click(taskEl.find('.delete')[0]);
+      TestUtils.Simulate.click(taskEl.find(`.${style.delete}`)[0]);
       domHelpers.waitsFor('li', 0, done);
     });
   });
@@ -73,7 +74,7 @@ describe('Todo', () => {
     TestUtils.Simulate.submit(formEl[0], { target: formEl[0] });
 
     domHelpers.waitsFor('li', 1, taskEl => {
-      const toggleEl = taskEl.find('.toggle-private');
+      const toggleEl = taskEl.find(`.${style.togglePrivate}`);
       expect(toggleEl.text()).toEqual('Public');
       TestUtils.Simulate.click(toggleEl[0]);
 
@@ -84,3 +85,4 @@ describe('Todo', () => {
     });
   });
 });
+//

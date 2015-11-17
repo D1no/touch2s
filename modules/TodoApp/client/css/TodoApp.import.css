@@ -49,7 +49,7 @@ form {
   position: relative;
 }
 
-.new-task input {
+.newTask input {
   box-sizing: border-box;
   padding: 10px 0;
   background: transparent;
@@ -59,7 +59,7 @@ form {
   font-size: 1em;
 }
 
-.new-task input:focus{
+.newTask input:focus{
   outline: 0;
 }
 
@@ -102,11 +102,11 @@ li.private {
   border-color: #ddd;
 }
 
-header .hide-completed {
+header .hideCompleted {
   float: right;
 }
 
-.toggle-private {
+.togglePrivate {
   margin-left: 5px;
 }
 
@@ -120,7 +120,7 @@ header .hide-completed {
     clear: both;
   }
 
-  .new-task input {
+  .newTask input {
     padding-bottom: 5px;
   }
 }

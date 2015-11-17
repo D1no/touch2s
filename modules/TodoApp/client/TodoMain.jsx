@@ -5,6 +5,7 @@ import TodoHeader from './components/TodoHeader';
 import TodoList from './components/TodoList';
 
 import Tasks from 'TodoApp/collections/Tasks';
+import style from './css/TodoApp.import.css'
 
 @ReactMixin.decorate(ReactMeteorData)
 export default class TodoMain extends Component {
@@ -43,7 +44,7 @@ export default class TodoMain extends Component {
     }
 
     return (
-        <div className="container">
+        <div className={style.container}>
           <TodoHeader
               incompleteCount={this.data.incompleteCount}
               hideCompleted={this.state.hideCompleted}

@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var babelSettings = { stage: 0 };
 
@@ -20,14 +21,25 @@ if (process.env.NODE_ENV !== 'production' && !process.env.IS_MIRROR) {
   };
 }
 
+var cssLoader;
+var plugins = [];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(new ExtractTextPlugin('style.css'));
+  cssLoader = ExtractTextPlugin.extract('style', 'css?module&localIdentName=[hash:base64:5]');
+} else {
+  cssLoader = 'style!css?module&localIdentName=[name]__[local]__[hash:base64:5]';
+}
+
 module.exports = {
   entry: './entry',
   module: {
     loaders: [
       { test: /\.jsx?$/, loader: 'babel', query: babelSettings, exclude: /node_modules/ },
-      { test: /\.css$/, loader: 'style!css' },
+      { test: /\.css$/, loader: cssLoader },
       { test: /\.(png|jpe?g)(\?.*)?$/, loader: 'url?limit=8182' },
       { test: /\.(svg|ttf|woff|eot)(\?.*)?$/, loader: 'file' }
     ]
-  }
+  },
+  plugins: plugins
 };
