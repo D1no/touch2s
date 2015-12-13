@@ -1,24 +1,22 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var babelSettings = { stage: 0 };
+var babelSettings = { presets: ['react', 'es2015', 'stage-0'] };
+babelSettings.plugins = ['transform-decorators-legacy'];
 
 if (process.env.NODE_ENV !== 'production' && !process.env.IS_MIRROR) {
-  babelSettings.plugins = ['react-transform'];
-  babelSettings.extra = {
-    'react-transform': {
-      transforms: [{
-        transform: 'react-transform-hmr',
-        imports: ['react'],
-        locals: ['module']
-      }, {
-        transform: 'react-transform-catch-errors',
-        imports: ['react', 'redbox-react']
-      }]
-      // redbox-react is breaking the line numbers :-(
-      // you might want to disable it
-    }
-  };
+  babelSettings.plugins.push(['react-transform', {
+    transforms: [{
+      transform: 'react-transform-hmr',
+      imports: ['react'],
+      locals: ['module']
+    }, {
+      transform: 'react-transform-catch-errors',
+      imports: ['react', 'redbox-react']
+    }]
+    // redbox-react is breaking the line numbers :-(
+    // you might want to disable it
+  }]);
 }
 
 var cssLoader;
