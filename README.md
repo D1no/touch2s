@@ -10,7 +10,7 @@ Clone this project to start a simple project using Meteor, React.js and Webpack.
 1. `cd kickstart-simple`
 1. `meteor`
 
-## The stack & features
+# The stack & features
 - Include the simple todo app example
 - ES6 modules
 - Meteor
@@ -21,7 +21,7 @@ Clone this project to start a simple project using Meteor, React.js and Webpack.
 - Optimize your code in production mode
 - Give access to NPM by using packages.json
 
-## How does it work?
+# How does it work?
 Webpack needs one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/client/webpack.conf.js) file for the client and one [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/webpack.conf.js) for the server. It allows you to have a better control over the build process. Every other files are not automatically included by Meteor. Everything is starting from your entry point. You can also have a [`webpack.conf.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/webpack.conf.js) that is shared between client and server for common settings.
 
 The server entry point in the project is at [`entry/server/entry.js`](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js). Everything that you want to load on your Meteor server, they have to be imported or required in some way.
@@ -44,17 +44,7 @@ You can use meteor run, meteor build, mup or anything working with Meteor.
 ## Deploy with Meteor-up
 `mup deploy`
 
-## Testing
-If you would like to activate unit and integration tests, you can add the following packages:
-
-```sh
-meteor add sanjo:jasmine
-meteor add velocity:html-reporter
-```
-
-And uncomment the code in [entry/client/entry.js](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/client/entry.js#L15-L25) and [entry/server/entry.js](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js#L17-L24)
-
-## Cordova
+# Cordova
 You need to do those 3 steps to make it works with iOS or Android:
 
 1. Add the platform to your Meteor project
