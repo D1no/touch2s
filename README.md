@@ -44,6 +44,16 @@ You can use meteor run, meteor build, mup or anything working with Meteor.
 ## Deploy with Meteor-up
 `mup deploy`
 
+## Testing
+If you would like to activate unit and integration tests, you can add the following packages:
+
+```sh
+meteor add sanjo:jasmine
+meteor add velocity:html-reporter
+```
+
+And uncomment the code in [entry/client/entry.js](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/client/entry.js#L15-L25) and [entry/server/entry.js](https://github.com/thereactivestack/kickstart-simple/blob/master/entry/server/entry.js#L17-L24)
+
 ## Cordova
 You need to do those 3 steps to make it works with iOS or Android:
 
