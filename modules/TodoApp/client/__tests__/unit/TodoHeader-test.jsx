@@ -1,5 +1,7 @@
-import TestUtils from 'react-addons-test-utils';
+import React from 'react';
 import TodoHeader from 'TodoApp/client/components/TodoHeader';
+
+const TestUtils = React.addons.TestUtils;
 
 describe('TodoHeader', () => {
   it('should display the incomplete count', () => {

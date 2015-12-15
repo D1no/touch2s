@@ -1,6 +1,8 @@
-import TestUtils from 'react-addons-test-utils';
+import React from 'react';
 import TodoList from 'TodoApp/client/components/TodoList';
 import TodoItem from 'TodoApp/client/components/TodoItem';
+
+const TestUtils = React.addons.TestUtils;
 
 describe('TodoList', () => {
   it('should display tasks', () => {
