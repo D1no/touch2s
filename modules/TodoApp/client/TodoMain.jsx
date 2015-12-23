@@ -7,30 +7,41 @@ import TodoList from './components/TodoList';
 import Tasks from 'TodoApp/collections/Tasks';
 import style from './css/TodoApp.import.css'
 
-@ReactMixin.decorate(ReactMeteorData)
+
+@ReactMixin.decorate(TrackerReact)
 export default class TodoMain extends Component {
 
-  state = {
-    hideCompleted: false
+  static defaultProps = {
+    subscription: Meteor.subscribe('tasks')
   }
 
-  getMeteorData() {
-    Meteor.subscribe('tasks');
+  constructor(props, context) {
+    super(props);
+    this.state = {
+      hideCompleted: false
+    }
+  }
 
+  componentWillUnmount() {
+    this.props.subscription.stop();
+  }
+
+  user() {
+    return Meteor.user()
+  }
+
+  tasks() {
     let taskFilter = {};
 
     if (this.state.hideCompleted) {
       taskFilter.checked = {$ne: true};
     }
 
-    const tasks = Tasks.find(taskFilter, {sort: {createdAt: -1}}).fetch();
-    const incompleteCount = Tasks.find({checked: {$ne: true}}).count();
+    return Tasks.find(taskFilter, {sort: {createdAt: -1}}).fetch();
+  }
 
-    return {
-      tasks,
-      incompleteCount,
-      user: Meteor.user()
-    };
+  incompleteCount() {
+    return Tasks.find({checked: {$ne: true}}).count();
   }
 
   handleToggleHideCompleted = (e) => {
@@ -38,19 +49,23 @@ export default class TodoMain extends Component {
   }
 
   render() {
-    if (!this.data.tasks) {
+    if (!this.props.subscription.ready()) {
       // loading
-      return null;
+      return (
+        <div className={style.container}>
+          <h1>Loading...</h1>
+        </div>
+      );
     }
 
     return (
         <div className={style.container}>
           <TodoHeader
-              incompleteCount={this.data.incompleteCount}
+              incompleteCount={this.incompleteCount()}
               hideCompleted={this.state.hideCompleted}
               toggleHideCompleted={this.handleToggleHideCompleted}
           />
-          <TodoList tasks={this.data.tasks} />
+          <TodoList tasks={this.tasks()} />
         </div>
     );
   }
