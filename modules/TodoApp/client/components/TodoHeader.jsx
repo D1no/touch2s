@@ -29,28 +29,48 @@ export default class TodoHeader extends Component {
 
     if (Meteor.userId()) {
       form = (
-        <form className={style.newTask} onSubmit={this.handleSubmit.bind(this)}>
-          <input type="text" name="text" placeholder="Type to add new tasks" />
-        </form>
+        <div className="item-content">
+          <div className="item-media"><i className="icon icon-form-name" /></div>
+          <div className="item-inner">
+            <div className="item-title label">New Task</div>
+            <div className="item-input">
+              <form className={style.newTask} onSubmit={this.handleSubmit.bind(this)}>
+                <input type="text" name="text" placeholder="Type to add new tasks" />
+              </form>
+            </div>
+          </div>
+        </div>
       );
     }
 
     return (
-      <header>
-        <h1>
-          <img src={require('../img/check.png')} alt="" />
-          Todo List ({this.props.incompleteCount})
-        </h1>
+      <div className="list-block">
+        <ul>
+          <li>
+            <div className="item-content">
+              <LoginButtons />
+            </div>
 
-        <label className={style.hideCompleted}>
-          <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
-          Hide Completed Tasks
-        </label>
-
-        <LoginButtons />
-
-        {form}
-      </header>
+          </li>
+          <li>
+            <div className="item-content">
+              <div className="item-media"><i className="icon icon-form-toggle" /></div>
+              <div className="item-inner">
+                <div className="item-title label">Hide Completed Tasks</div>
+                <div className="item-input">
+                  <label className="label-switch">
+                    <input type="checkbox" checked={this.props.hideCompleted} onChange={this.props.toggleHideCompleted} />
+                    <div className="checkbox" />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            {form}
+          </li>
+        </ul>
+      </div>
     );
   }
 }

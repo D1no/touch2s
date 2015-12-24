@@ -5,14 +5,13 @@ import TodoHeader from './components/TodoHeader';
 import TodoList from './components/TodoList';
 
 import Tasks from 'TodoApp/collections/Tasks';
-import style from './css/TodoApp.import.css'
-
+import style from './css/TodoApp.import.css';
 
 @ReactMixin.decorate(TrackerReact)
 export default class TodoMain extends Component {
 
   static defaultProps = {
-    subscription: Meteor.subscribe('tasks')
+    subscription: Meteor.isClient ? Meteor.subscribe('tasks') : {ready() {return true} }
   }
 
   constructor(props, context) {
@@ -41,7 +40,14 @@ export default class TodoMain extends Component {
   }
 
   incompleteCount() {
-    return Tasks.find({checked: {$ne: true}}).count();
+    let count = Tasks.find({checked: {$ne: true}}).count();
+
+    if(Meteor.isServer) {
+      console.dir(Tasks.find().fetch());
+      console.log(count);
+    }
+
+    return count;
   }
 
   handleToggleHideCompleted = (e) => {
@@ -59,13 +65,44 @@ export default class TodoMain extends Component {
     }
 
     return (
-        <div className={style.container}>
+        <div className="page-content">
           <TodoHeader
               incompleteCount={this.incompleteCount()}
               hideCompleted={this.state.hideCompleted}
               toggleHideCompleted={this.handleToggleHideCompleted}
           />
+          <div className="content-block-title">Todo List ({this.incompleteCount()})</div>
           <TodoList tasks={this.tasks()} />
+          <div className="content-block-title">What about simple navigation?</div>
+          <div className="list-block">
+            <ul>
+              <li><a href="#about" className="item-link">
+                <div className="item-content">
+                  <div className="item-inner">
+                    <div className="item-title">About</div>
+                  </div>
+                </div></a></li>
+              <li><a href="#services" className="item-link">
+                <div className="item-content">
+                  <div className="item-inner">
+                    <div className="item-title">Services</div>
+                  </div>
+                </div></a></li>
+              <li><a href="#form" className="item-link">
+                <div className="item-content">
+                  <div className="item-inner">
+                    <div className="item-title">Form</div>
+                  </div>
+                </div></a></li>
+            </ul>
+          </div>
+          <div className="content-block-title">Side panels</div>
+          <div className="content-block">
+            <div className="row">
+              <div className="col-50"><a href="#" data-panel="left" className="button open-panel">Left Panel</a></div>
+              <div className="col-50"><a href="#" data-panel="right" className="button open-panel">Right Panel</a></div>
+            </div>
+          </div>
         </div>
     );
   }

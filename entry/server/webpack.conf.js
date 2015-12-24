@@ -8,7 +8,7 @@ module.exports = {
   entry: './entry',
   module: {
     loaders: [
-      { test: /\.jsx?$/, loader: 'babel', query: babelSettings, exclude: /node_modules/ },
+      { test: /\.jsx?$/, loader: 'babel', query: babelSettings, exclude: /node_modules|es5/ },
       { test: /\.css$/, loader: 'css/locals?module&localIdentName=' + localIdentName },
       { test: /\.(png|jpe?g)(\?.*)?$/, loader: 'url?limit=8182' },
       { test: /\.(svg|ttf|woff|eot)(\?.*)?$/, loader: 'file' }

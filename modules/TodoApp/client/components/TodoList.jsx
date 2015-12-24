@@ -8,9 +8,11 @@ export default class TodoList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.props.tasks.map(task => <TodoItem key={task._id} task={task} />)}
-      </ul>
+      <div className="list-block">
+        <ul>
+          {this.props.tasks.map(task => <TodoItem key={task._id} task={task} />)}
+        </ul>
+      </div>
     );
   }
 }
