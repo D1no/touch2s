@@ -5,7 +5,8 @@ export default class TodoHeader extends Component {
   static propTypes = {
     hideCompleted: PropTypes.bool,
     toggleHideCompleted: PropTypes.func.isRequired,
-    incompleteCount: PropTypes.number.isRequired
+    incompleteCount: PropTypes.number.isRequired,
+    user: PropTypes.object
   }
 
   handleSubmit(event) {
@@ -25,7 +26,7 @@ export default class TodoHeader extends Component {
   render() {
     let form = null;
 
-    if (Meteor.userId()) {
+    if (this.props.user) {
       form = (
         <li>
           <div className="item-content">

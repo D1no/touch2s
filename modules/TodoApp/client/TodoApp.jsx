@@ -4,12 +4,14 @@ import Helmet from 'react-helmet';
 import F7 from './f7/js/f7';
 
 import LoginScreen from './LoginScreen';
+import LeftPanel from './LeftPanel';
+import RightPanel from './RightPanel';
 
 @ReactMixin.decorate(TrackerReact)
 export default class TodoApp extends Component {
-  /*		static propTypes = {
-   children: PropTypes.any.isRequired
-   }*/
+  static propTypes = {
+    children: PropTypes.any.isRequired
+  }
 
   constructor(props, context) {
     super(props);
@@ -23,7 +25,11 @@ export default class TodoApp extends Component {
   }
 
   loggingIn() {
-    return Meteor.loggingIn();
+    if(Meteor.isClient) {
+      return Meteor.loggingIn();
+    } else {
+      return false;
+    }
   }
 
   handleLoginDialog() {
@@ -35,22 +41,24 @@ export default class TodoApp extends Component {
   }
 
   componentDidMount() {
-    let app = new F7();
-    //this.setState({app: app});
+    if(Meteor.isClient) {
+      let app = new F7();
+      //this.setState({app: app});
 
-    // Add main View
-    let view = app.addView('.view-main', {
-      // Enable dynamic Navbar
-      dynamicNavbar: true,
-      // Enable Dom Cache so we can use all inline pages
-      domCache: true
-    });
+      // Add main View
+      let view = app.addView('.view-main', {
+        // Enable dynamic Navbar
+        dynamicNavbar: true,
+        // Enable Dom Cache so we can use all inline pages
+        domCache: true
+      });
 
-    this.setState({f7: app});
+      this.setState({f7: app});
+    }
   }
 
   render() {
-    const {page, leftPanel, rightPanel} = this.props;
+    const {page} = this.props;
 
     return (
       <span className="f7-main">
@@ -65,9 +73,9 @@ export default class TodoApp extends Component {
         {/* Panels overlay*/}
         <div className="panel-overlay"/>
         {/* Left panel with reveal effect*/}
-        {leftPanel}
+        <LeftPanel />
         {/* Right panel with cover effect*/}
-        {rightPanel}
+        <RightPanel />
         {/* Views*/}
         <div className="views">
           {/* Your main view, should have "view-main" class*/}
@@ -77,7 +85,7 @@ export default class TodoApp extends Component {
               {/* Navbar inner for Index page*/}
               <div data-page="index" className="navbar-inner">
                 {/* We have home navbar without left link*/}
-                <div className="center sliding">Mobile Kickstart</div>
+                <div className="center sliding">MobileApp</div>
                 <div className="right">
                   {/* Right link contains only icon - additional "icon-only" class*/}
                   <a href="#" onClick={this.handleLoginDialog.bind(this)} className={"button " + (this.user() ? "active" : "")}>{this.user() ? "Sign Out" : "Sign In"}</a>
@@ -108,7 +116,7 @@ export default class TodoApp extends Component {
               {/* Index Page*/}
               <div data-page="index" className="page">
                 {/* Scrollable page content*/}
-                {page}
+                {this.props.children}
               </div>
               {/* About Page*/}
               <div data-page="about" className="page cached">

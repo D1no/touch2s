@@ -40,10 +40,10 @@ export default class LoginScreen extends Component {
               this.setState({isError: true, status: err.reason});
             } else {
               this.setState({isError: false, status: "Welcome! You are Signed-In!"});
-              ReactDOM.findDOMNode(this.refs["passwordConfirm"]).value = "";
             }
           });
         }
+        ReactDOM.findDOMNode(this.refs["passwordConfirm"]).value = "";
 
       } else {
         // When logged out, try log in
@@ -70,7 +70,7 @@ export default class LoginScreen extends Component {
     // Manage sign in button
     let dialog = null;
     if(this.state.createAccount) {
-      dialog = "Create & Sign In";
+      dialog = this.props.user ? "Sign Out" : "Create & Sign In";
     } else {
       dialog = this.props.user ? "Sign Out" : "Sign In";
     }

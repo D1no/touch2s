@@ -32,6 +32,8 @@ export default class TodoMain extends Component {
   tasks() {
     let taskFilter = {};
 
+    console.dir(Tasks.find({}).fetch());
+
     if (this.state.hideCompleted) {
       taskFilter.checked = {$ne: true};
     }
@@ -42,11 +44,6 @@ export default class TodoMain extends Component {
   incompleteCount() {
     let count = Tasks.find({checked: {$ne: true}}).count();
 
-    if(Meteor.isServer) {
-      console.dir(Tasks.find().fetch());
-      console.log(count);
-    }
-
     return count;
   }
 
@@ -55,13 +52,17 @@ export default class TodoMain extends Component {
   }
 
   render() {
-    if (!this.props.subscription.ready()) {
+
+    let content = null;
+    if (Meteor.isClient && !this.props.subscription.ready()) {
       // loading
-      return (
-        <div className={style.container}>
-          <h1>Loading...</h1>
-        </div>
+      content = (
+        <span style={{width:"42px", height:"42px"}} className="preloader" />
       );
+    } else {
+      content = (
+        <TodoList tasks={this.tasks()} />
+      )
     }
 
     return (
@@ -70,9 +71,10 @@ export default class TodoMain extends Component {
               incompleteCount={this.incompleteCount()}
               hideCompleted={this.state.hideCompleted}
               toggleHideCompleted={this.handleToggleHideCompleted}
+              user={this.user()}
           />
           <div className="content-block-title">Todo List <span className="badge bg-blue">{this.incompleteCount()}</span></div>
-          <TodoList tasks={this.tasks()} />
+          {content}
           <div className="content-block-title">What about simple navigation?</div>
           <div className="list-block">
             <ul>
