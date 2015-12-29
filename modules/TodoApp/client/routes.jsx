@@ -2,12 +2,19 @@ import { Route, IndexRoute } from 'react-router';
 
 import TodoApp from './TodoApp';
 import TodoMain from './TodoMain';
-import TestComponent from './TestComponent';
-import Test from './test';
+import LeftPanel from './LeftPanel';
+import RightPanel from './RightPanel';
+import LoginScreen from './LoginScreen';
 
 export default (
-    <Route path="/" component={TestComponent}>
-      <IndexRoute component={{content: Test}} />
+  <Route>
+    <Route path="/" component={TodoApp}>
+      <IndexRoute component={{
+      page: TodoMain,
+      leftPanel: LeftPanel,
+      rightPanel: RightPanel
+      }} />
     </Route>
+  </Route>
 );
 

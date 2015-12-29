@@ -46,4 +46,6 @@ header .hideCompleted {
 }
 
 .togglePrivate {
+  background-color: #EEEEEE;
+  font-style: italic;
 }

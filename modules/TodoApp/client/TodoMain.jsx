@@ -26,7 +26,7 @@ export default class TodoMain extends Component {
   }
 
   user() {
-    return Meteor.user()
+    return Meteor.user();
   }
 
   tasks() {
@@ -71,7 +71,7 @@ export default class TodoMain extends Component {
               hideCompleted={this.state.hideCompleted}
               toggleHideCompleted={this.handleToggleHideCompleted}
           />
-          <div className="content-block-title">Todo List ({this.incompleteCount()})</div>
+          <div className="content-block-title">Todo List <span className="badge bg-blue">{this.incompleteCount()}</span></div>
           <TodoList tasks={this.tasks()} />
           <div className="content-block-title">What about simple navigation?</div>
           <div className="list-block">
@@ -95,13 +95,6 @@ export default class TodoMain extends Component {
                   </div>
                 </div></a></li>
             </ul>
-          </div>
-          <div className="content-block-title">Side panels</div>
-          <div className="content-block">
-            <div className="row">
-              <div className="col-50"><a href="#" data-panel="left" className="button open-panel">Left Panel</a></div>
-              <div className="col-50"><a href="#" data-panel="right" className="button open-panel">Right Panel</a></div>
-            </div>
           </div>
         </div>
     );
