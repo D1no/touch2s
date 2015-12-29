@@ -23,6 +23,11 @@ export default class TodoHeader extends Component {
     event.target.text.value = '';
   }
 
+  hideCompleted(e) {
+    e.preventDefault();
+    this.props.toggleHideCompleted(!this.refs["checkbox"].checked);
+  }
+
   render() {
     let form = null;
 
@@ -50,10 +55,12 @@ export default class TodoHeader extends Component {
               <div className="item-media"><i className="icon icon-form-name" /></div>
               <div className="item-inner">
                 <div className="item-title">Hide Completed</div>
-                <div className="item-after">
-                  <label className="label-switch no-fastclick">
-                    <input type="checkbox" checked={this.props.hideCompleted}
-                           onChange={this.props.toggleHideCompleted} />
+                <div className="item-after" onClick={this.hideCompleted.bind(this)}>
+                  <label className="label-switch">
+                    <input type="checkbox"
+                           ref="checkbox"
+                           checked={this.props.hideCompleted}
+                           readOnly="true" />
                     <div className="checkbox" />
                   </label>
                 </div>

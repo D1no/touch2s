@@ -49,3 +49,37 @@ header .hideCompleted {
   background-color: #EEEEEE;
   font-style: italic;
 }
+
+.githubIcon {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/githubIcon.png");
+  border-radius: 6px;
+}
+
+.meteorIcon {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/meteorIcon.png");
+  border-radius: 6px;
+}
+
+.reactIcon {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/reactIcon.png");
+  border-radius: 6px;
+}
+
+.webpackIcon {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/webpackIcon.png");
+  border-radius: 6px;
+}
+.reactiveStackIcon {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/reactiveStackIcon.png");
+  border-radius: 6px;
+}

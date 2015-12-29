@@ -20,7 +20,7 @@ export default class LoginScreen extends Component {
       e.preventDefault();
     }
 
-    const email = this.refs["email"].value;
+    const username = this.refs["username"].value;
     const password = this.refs["password"].value;
 
     if(this.props.user) {
@@ -35,11 +35,11 @@ export default class LoginScreen extends Component {
         if(password != passwordConfirm) {
           this.setState({isError: true, status: "Your passwords don't match!"});
         } else {
-          Accounts.createUser({email: email, password: password}, (err) => {
+          Accounts.createUser({username: username, password: password}, (err) => {
             if(err) {
               this.setState({isError: true, status: err.reason});
             } else {
-              this.setState({isError: false, status: "Welcome! You are Signed-In!"});
+              this.setState({isError: false, createAccount: false, status: "Welcome! You are Signed-In!"});
             }
           });
         }
@@ -47,12 +47,12 @@ export default class LoginScreen extends Component {
 
       } else {
         // When logged out, try log in
-        Meteor.loginWithPassword(email, password, (err) => {
+        Meteor.loginWithPassword(username, password, (err) => {
           if(err) {
             this.setState({isError: true, status: err.reason});
           } else {
-            this.setState({isError: false, status: "Welcome! You are Signed-In!"});
-            ReactDOM.findDOMNode(this.refs["email"]).value = "";
+            this.setState({isError: false, createAccount: false, status: "Welcome! You are Signed-In!"});
+            ReactDOM.findDOMNode(this.refs["username"]).value = "";
             this.props.f7.closeModal();
           }
         });
@@ -125,10 +125,10 @@ export default class LoginScreen extends Component {
         <ul>
           <li className="item-content">
             <div className="item-inner">
-              <div className="item-title label">Email</div>
+              <div className="item-title label">Username</div>
               <div className="item-input">
-                <input type="text" ref="email"
-                       name="email" placeholder="Your username" />
+                <input type="text" ref="username"
+                       name="username" placeholder="Your username" />
               </div>
             </div>
           </li>

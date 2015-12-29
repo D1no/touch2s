@@ -3,9 +3,9 @@ import ReactMixin from 'react-mixin';
 import Helmet from 'react-helmet';
 import F7 from './f7/js/f7';
 
-import LoginScreen from './LoginScreen';
-import LeftPanel from './LeftPanel';
-import RightPanel from './RightPanel';
+import LoginScreen from './components/LoginScreen';
+import LeftPanel from './components/LeftPanel';
+import RightPanel from './components/RightPanel';
 
 @ReactMixin.decorate(TrackerReact)
 export default class TodoApp extends Component {

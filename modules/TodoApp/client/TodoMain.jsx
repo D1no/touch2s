@@ -32,8 +32,6 @@ export default class TodoMain extends Component {
   tasks() {
     let taskFilter = {};
 
-    console.dir(Tasks.find({}).fetch());
-
     if (this.state.hideCompleted) {
       taskFilter.checked = {$ne: true};
     }
@@ -47,8 +45,8 @@ export default class TodoMain extends Component {
     return count;
   }
 
-  handleToggleHideCompleted = (e) => {
-    this.setState({ hideCompleted: e.target.checked });
+  handleToggleHideCompleted(checked) {
+    this.setState({ hideCompleted: checked });
   }
 
   render() {
@@ -57,11 +55,13 @@ export default class TodoMain extends Component {
     if (Meteor.isClient && !this.props.subscription.ready()) {
       // loading
       content = (
+      <div className="content-block" style={{textAlign: "center"}}>
         <span style={{width:"42px", height:"42px"}} className="preloader" />
+      </div>
       );
     } else {
       content = (
-        <TodoList tasks={this.tasks()} />
+        <TodoList tasks={this.tasks()} user={this.user()} />
       )
     }
 
@@ -70,7 +70,7 @@ export default class TodoMain extends Component {
           <TodoHeader
               incompleteCount={this.incompleteCount()}
               hideCompleted={this.state.hideCompleted}
-              toggleHideCompleted={this.handleToggleHideCompleted}
+              toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
               user={this.user()}
           />
           <div className="content-block-title">Todo List <span className="badge bg-blue">{this.incompleteCount()}</span></div>
@@ -78,19 +78,19 @@ export default class TodoMain extends Component {
           <div className="content-block-title">What about simple navigation?</div>
           <div className="list-block">
             <ul>
-              <li><a href="#about" className="item-link">
+              <li><a href="#about" className="item-link ajax">
                 <div className="item-content">
                   <div className="item-inner">
                     <div className="item-title">About</div>
                   </div>
                 </div></a></li>
-              <li><a href="#services" className="item-link">
+              <li><a href="#services" className="item-link ajax">
                 <div className="item-content">
                   <div className="item-inner">
                     <div className="item-title">Services</div>
                   </div>
                 </div></a></li>
-              <li><a href="#form" className="item-link">
+              <li><a href="#form" className="item-link ajax">
                 <div className="item-content">
                   <div className="item-inner">
                     <div className="item-title">Form</div>

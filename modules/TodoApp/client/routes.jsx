@@ -2,8 +2,8 @@ import { Route, IndexRoute } from 'react-router';
 
 import TodoApp from './TodoApp';
 import TodoMain from './TodoMain';
-import LeftPanel from './LeftPanel';
-import RightPanel from './RightPanel';
+import LeftPanel from './components/LeftPanel';
+import RightPanel from './components/RightPanel';
 
 export default (
   <Route>

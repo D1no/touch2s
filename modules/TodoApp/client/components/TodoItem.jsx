@@ -3,7 +3,8 @@ import style from 'TodoApp/client/css/TodoApp.import.css';
 
 export default class TodoItem extends Component {
   static propTypes = {
-    task: PropTypes.object.isRequired
+    task: PropTypes.object.isRequired,
+    user: PropTypes.object
   }
 
   handleChecked(e) {
@@ -28,16 +29,6 @@ export default class TodoItem extends Component {
     Meteor.call('setPrivate', this.props.task._id, !this.props.task.private);
   }
 
-  renderTogglePrivate() {
-    if (Meteor.userId() !== this.props.task.owner) {
-      return null;
-    }
-
-    return (
-      <a href="#" className="bg-blue" style={{}} onClick={this.handleSetPrivate.bind(this)}>{this.props.task.private ? 'Make Public' : 'Make Private'}</a>
-    );
-  }
-
   render() {
     let itemClass = '';
 
@@ -49,9 +40,22 @@ export default class TodoItem extends Component {
       itemClass += ' ' + style.private;
     }
 
+    let togglePrivate = null;
+    if(this.props.user) {
+      togglePrivate = (
+        <a href="#" className="bg-blue" style={{}} onClick={this.handleSetPrivate.bind(this)}>
+          {this.props.task.private ? 'Make Public' : 'Make Private'}
+        </a>
+      )
+    } else {
+      togglePrivate = null;
+    }
+
     return (
       <li className="swipeout" >
-        <div className="swipeout-content item-content" onClick={this.handleChecked.bind(this)} style={{paddingLeft: "0px"}}>
+        <div className="swipeout-content item-content"
+             onClick={this.handleChecked.bind(this)}
+             style={{paddingLeft: "0px"}}>
           <label className={"label-checkbox item-content " + (this.props.task.private ? style.togglePrivate : '')}
                  style={{width: "100%", paddingLeft: "20px"} }>
             <input type="checkbox" name="task-checkbox"
@@ -67,7 +71,7 @@ export default class TodoItem extends Component {
           </label>
         </div>
         <div className="swipeout-actions-right">
-          {this.renderTogglePrivate()}
+          {togglePrivate}
           <a href="#" className="swipeout-delete" style={{}} onClick={this.handleDelete.bind(this)}>Delete</a>
         </div>
       </li>
