@@ -13,6 +13,9 @@ export default class TodoList extends Component {
         <ul>
           {this.props.tasks.map(task => <TodoItem key={task._id} task={task} user={this.props.user} />)}
         </ul>
+        <div className="list-block-label">
+          Swipe left on a task to delete, set private.
+        </div>
       </div>
     );
   }
