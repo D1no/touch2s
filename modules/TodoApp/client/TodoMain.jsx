@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 import ReactMixin from 'react-mixin';
 
 import TodoHeader from './components/TodoHeader';
@@ -10,6 +10,10 @@ import style from './css/TodoApp.import.css';
 // Thanks to TrackerReact all our reactive meteor calls render also reactively in react (i.e. user())
 @ReactMixin.decorate(TrackerReact)
 export default class TodoMain extends Component {
+
+  static propTypes = {
+    user: PropTypes.object
+  };
 
   constructor(props, context) {
     super(props);
@@ -23,23 +27,6 @@ export default class TodoMain extends Component {
 
   componentWillUnmount() {
     this.state.subscription.tasks.stop();
-  }
-
-  user() {
-    // Meteor.userId is also available on the server via a cookie thanks to fast-render
-    let userId = Meteor.userId();
-
-    if (userId) {
-      // But to SSR user info (i.e. username), we can not get the user object via Meteor.user() on the Server
-      // (a reactive data source), so we query the user object via the collection handler (not reactive).
-      if (Meteor.isServer) {
-        return Meteor.users._collection.findOne({_id: userId});
-      }
-      return Meteor.user();
-
-    } else {
-      return false;
-    }
   }
 
   tasks() {
@@ -74,7 +61,7 @@ export default class TodoMain extends Component {
       );
     } else {
       content = (
-        <TodoList tasks={this.tasks()} user={this.user()}/>
+        <TodoList tasks={this.tasks()} user={this.props.user}/>
       )
     }
 
@@ -84,10 +71,10 @@ export default class TodoMain extends Component {
           incompleteCount={this.incompleteCount()}
           hideCompleted={this.state.hideCompleted}
           toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
-          user={this.user()}
+          user={this.props.user}
         />
         <div className="content-block-title">
-          {"Todo's " + (this.user() ? "(" + this.user().username + ") " : "") }
+          {"Todo's " + (this.props.user ? "(" + this.props.user.username + ") " : "") }
           <span className="badge">{this.incompleteCount()}</span>
         </div>
         {content}

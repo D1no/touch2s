@@ -34,7 +34,7 @@ export default class TodoApp extends Component {
       return Meteor.user();
 
     } else {
-      return false;
+      return null;
     }
   }
 
@@ -124,7 +124,7 @@ export default class TodoApp extends Component {
               {/* Index Page*/}
               <div data-page="index" className="page">
                 {/* Scrollable page content*/}
-                {this.props.children}
+                {React.cloneElement(this.props.children, {user: this.user()})}
               </div>
               {/* About Page*/}
               <div data-page="about" className="page cached">
