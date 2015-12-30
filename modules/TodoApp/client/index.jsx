@@ -107,7 +107,7 @@ export default class TodoApp extends Component {
               {/* Navbar inner for Index page*/}
               <div data-page="index" className="navbar-inner">
                 {/* We have home navbar without left link*/}
-                <div className="center sliding">Touch2S</div>
+                <div className="left sliding">Touch2S</div>
                 <div className="right">
                   {/* Right link contains only icon - additional "icon-only" class*/}
                   <a href="#" onClick={this.handleLoginDialog.bind(this)} className={"button " + (this.auth() ? "active" : "")}>{this.auth() ? "Sign Out" : "Sign In"}</a>
