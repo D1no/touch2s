@@ -11,26 +11,34 @@ import style from './css/TodoApp.import.css';
 @ReactMixin.decorate(TrackerReact)
 export default class TodoMain extends Component {
 
-  static defaultProps = {
-    subscription: !Meteor.isServer ? Meteor.subscribe('tasks') : {ready() {return true} }
-  };
-
   constructor(props, context) {
     super(props);
     this.state = {
+      subscription: {
+        tasks: Meteor.subscribe('tasks')
+      },
       hideCompleted: false
     }
   }
 
   componentWillUnmount() {
-    this.props.subscription.stop();
+    this.state.subscription.tasks.stop();
   }
 
   user() {
-    if(Meteor.isServer) {
-      return false;
-    } else {
+    // Meteor.userId is also available on the server via a cookie thanks to fast-render
+    let userId = Meteor.userId();
+
+    if (userId) {
+      // But to SSR user info (i.e. username), we can not get the user object via Meteor.user() on the Server
+      // (a reactive data source), so we query the user object via the collection handler (not reactive).
+      if (Meteor.isServer) {
+        return Meteor.users._collection.findOne({_id: userId});
+      }
       return Meteor.user();
+
+    } else {
+      return false;
     }
   }
 
@@ -51,56 +59,58 @@ export default class TodoMain extends Component {
   }
 
   handleToggleHideCompleted(checked) {
-    this.setState({ hideCompleted: checked });
+    this.setState({hideCompleted: checked});
   }
 
   render() {
 
     let content = null;
-    if (!Meteor.isServer && !this.props.subscription.ready()) {
+    if (!Meteor.isServer && !this.state.subscription.tasks.ready()) {
       // loading
       content = (
-      <div className="content-block" style={{textAlign: "center"}}>
-        <span style={{width:"42px", height:"42px"}} className="preloader" />
-      </div>
+        <div className="content-block" style={{textAlign: "center"}}>
+          <span style={{width:"42px", height:"42px"}} className="preloader"/>
+        </div>
       );
     } else {
       content = (
-        <TodoList tasks={this.tasks()} user={this.user()} />
+        <TodoList tasks={this.tasks()} user={this.user()}/>
       )
     }
 
     return (
-        <div className="page-content">
-          <TodoHeader
-              incompleteCount={this.incompleteCount()}
-              hideCompleted={this.state.hideCompleted}
-              toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
-              user={this.user()}
-          />
-          <div className="content-block-title">
-            {"Todo's " + (this.user() ? "(" + this.user().username + ") " : "") }
-            <span className="badge">{this.incompleteCount()}</span>
-          </div>
-          {content}
-          <div className="content-block-title">Example Pages</div>
-          <div className="list-block">
-            <ul>
-              <li><a href="#about" className="item-link ajax">
-                <div className="item-content">
-                  <div className="item-inner">
-                    <div className="item-title">Example About Page</div>
-                  </div>
-                </div></a></li>
-              <li><a href="#form" className="item-link ajax">
-                <div className="item-content">
-                  <div className="item-inner">
-                    <div className="item-title">Form Elements</div>
-                  </div>
-                </div></a></li>
-            </ul>
-          </div>
+      <div className="page-content">
+        <TodoHeader
+          incompleteCount={this.incompleteCount()}
+          hideCompleted={this.state.hideCompleted}
+          toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
+          user={this.user()}
+        />
+        <div className="content-block-title">
+          {"Todo's " + (this.user() ? "(" + this.user().username + ") " : "") }
+          <span className="badge">{this.incompleteCount()}</span>
         </div>
+        {content}
+        <div className="content-block-title">Example Pages</div>
+        <div className="list-block">
+          <ul>
+            <li><a href="#about" className="item-link ajax">
+              <div className="item-content">
+                <div className="item-inner">
+                  <div className="item-title">Example About Page</div>
+                </div>
+              </div>
+            </a></li>
+            <li><a href="#form" className="item-link ajax">
+              <div className="item-content">
+                <div className="item-inner">
+                  <div className="item-title">Form Elements</div>
+                </div>
+              </div>
+            </a></li>
+          </ul>
+        </div>
+      </div>
     );
   }
 };

@@ -22,10 +22,19 @@ export default class TodoApp extends Component {
   }
 
   user() {
-    if(Meteor.isServer) {
-      return false;
-    } else {
+    // Meteor.userId is also available on the server via a cookie thanks to fast-render
+    let userId = Meteor.userId();
+
+    if (userId) {
+      // But to SSR user info (i.e. username), we can not get the user object via Meteor.user() on the Server
+      // (a reactive data source), so we query the user object via the collection handler (not reactive).
+      if (Meteor.isServer) {
+        return Meteor.users._collection.findOne({_id: userId});
+      }
       return Meteor.user();
+
+    } else {
+      return false;
     }
   }
 
