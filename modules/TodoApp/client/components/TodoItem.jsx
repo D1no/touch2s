@@ -37,7 +37,7 @@ export default class TodoItem extends Component {
     }
 
     let togglePrivate = null;
-    if(this.props.user) {
+    if(this.props.user && this.props.user.username === this.props.task.username) {
       togglePrivate = (
         <a href="#" className="bg-blue" style={{}} onClick={this.handleSetPrivate.bind(this)}>
           {this.props.task.private ? 'Make Public' : 'Make Private'}
