@@ -5,7 +5,7 @@ export default class TodoList extends Component {
   static propTypes = {
     tasks: PropTypes.array.isRequired,
     user: PropTypes.object
-  }
+  };
 
   render() {
     return (

@@ -21,7 +21,15 @@ export default class TodoApp extends Component {
     }
   }
 
+  auth() {
+    // Use auth() for auth checks.
+    // Fast-Render transports userId() on SSR directly to the client
+    // (if he is authed). So we use this for auth checks - faster than Meteor.user()
+    return Meteor.userId() ? true : false;
+  }
+
   user() {
+    // Only use user() to get the user object.
     // Meteor.userId is also available on the server via a cookie thanks to fast-render
     let userId = Meteor.userId();
 
@@ -102,7 +110,7 @@ export default class TodoApp extends Component {
                 <div className="center sliding">Touch2S</div>
                 <div className="right">
                   {/* Right link contains only icon - additional "icon-only" class*/}
-                  <a href="#" onClick={this.handleLoginDialog.bind(this)} className={"button " + (this.user() ? "active" : "")}>{this.user() ? "Sign Out" : "Sign In"}</a>
+                  <a href="#" onClick={this.handleLoginDialog.bind(this)} className={"button " + (this.auth() ? "active" : "")}>{this.auth() ? "Sign Out" : "Sign In"}</a>
                   {/* <a href="#" className="link icon-only open-panel"><i className="icon icon-bars"/></a>*/}
                 </div>
               </div>
@@ -124,7 +132,7 @@ export default class TodoApp extends Component {
               {/* Index Page*/}
               <div data-page="index" className="page">
                 {/* Scrollable page content*/}
-                {React.cloneElement(this.props.children, {user: this.user()})}
+                {React.cloneElement(this.props.children, {user: this.user(), auth: this.auth()})}
               </div>
               {/* About Page*/}
               <div data-page="about" className="page cached">

@@ -12,7 +12,8 @@ import style from './css/TodoApp.import.css';
 export default class TodoMain extends Component {
 
   static propTypes = {
-    user: PropTypes.object
+    user: PropTypes.object,
+    auth: React.PropTypes.bool
   };
 
   constructor(props, context) {
@@ -61,7 +62,7 @@ export default class TodoMain extends Component {
       );
     } else {
       content = (
-        <TodoList tasks={this.tasks()} user={this.props.user}/>
+        <TodoList tasks={this.tasks()} user={this.props.user} />
       )
     }
 
@@ -72,9 +73,11 @@ export default class TodoMain extends Component {
           hideCompleted={this.state.hideCompleted}
           toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
           user={this.props.user}
+          auth={this.props.auth}
         />
         <div className="content-block-title">
-          {"Todo's " + (this.props.user ? "(" + this.props.user.username + ") " : "") }
+          {/* Checks if the user is authenticated. If so, show "re-validating..." until the user object arrives. */}
+          {"Todo's " + (this.props.auth ? "(" + (this.props.user ? this.props.user.username : "re-validating...") + ") " : "") }
           <span className="badge">{this.incompleteCount()}</span>
         </div>
         {content}

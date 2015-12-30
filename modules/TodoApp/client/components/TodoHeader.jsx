@@ -6,8 +6,9 @@ export default class TodoHeader extends Component {
     hideCompleted: PropTypes.bool,
     toggleHideCompleted: PropTypes.func.isRequired,
     incompleteCount: PropTypes.number.isRequired,
-    user: PropTypes.object
-  }
+    user: PropTypes.object,
+    auth: PropTypes.bool
+  };
 
   handleSubmit(event) {
     // Prevent default browser form submit
@@ -31,13 +32,13 @@ export default class TodoHeader extends Component {
   render() {
     let form = null;
 
-    if (this.props.user) {
+    if (this.props.auth) {
       form = (
         <li>
           <div className="item-content">
             <div className="item-inner">
               <div className="item-input">
-                <form className={style.newTask} onSubmit={this.handleSubmit.bind(this)}>
+                <form onSubmit={this.handleSubmit.bind(this)}>
                   <input type="text" name="text" placeholder="Type to add new tasks" />
                 </form>
               </div>
