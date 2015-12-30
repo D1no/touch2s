@@ -5,10 +5,10 @@ export default class TodoItem extends Component {
   static propTypes = {
     task: PropTypes.object.isRequired,
     user: PropTypes.object
-  }
+  };
 
   handleChecked(e) {
-    // Prevent default otherwise click would fire twice due to fast-click & react acting on it
+    // Prevent default otherwise click would fire twice due to fast-click & react acting on it (f7 incl. fast-click)
     e.preventDefault();
     // Can not use e.target.checked because iOS does not fire onChange events
     // on input fields inside of labels when fast-click is in use. So we use a ref.
@@ -30,14 +30,10 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    let itemClass = '';
+    let itemClass = 'item-title ';
 
     if (this.props.task.checked) {
       itemClass += style.checked;
-    }
-
-    if (this.props.task.private) {
-      itemClass += ' ' + style.private;
     }
 
     let togglePrivate = null;
@@ -65,8 +61,9 @@ export default class TodoItem extends Component {
                    className={style.toggleChecked} />
             <div className="item-media"><i className="icon icon-form-checkbox" /></div>
             <div className="item-inner">
-              <div className="item-title">{this.props.task.text}</div>
-              <div className="item-after">{this.props.task.username}</div>
+              <div className={itemClass}>{this.props.task.text}</div>
+              {/* Lets see how crazy we can get with itinerary operators */}
+              <div className="item-after">{(this.props.user && this.props.user.username === this.props.task.username) ? (this.props.task.private ? "(private)" : "") : "by " + this.props.task.username}</div>
             </div>
           </label>
         </div>

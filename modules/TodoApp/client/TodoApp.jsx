@@ -7,11 +7,12 @@ import LoginScreen from './components/LoginScreen';
 import LeftPanel from './components/LeftPanel';
 import RightPanel from './components/RightPanel';
 
+// Thanks to TrackerReact all our reactive meteor calls render also reactively in react (i.e. user())
 @ReactMixin.decorate(TrackerReact)
 export default class TodoApp extends Component {
   static propTypes = {
     children: PropTypes.any.isRequired
-  }
+  };
 
   constructor(props, context) {
     super(props);
@@ -53,13 +54,13 @@ export default class TodoApp extends Component {
         domCache: true
       });
 
+      // Pass instance to state to pass to children.
+      // We are anyhow able to always get the instance via new F7()
       this.setState({f7: app});
     }
   }
 
   render() {
-    const {page} = this.props;
-
     return (
       <span className="f7-main">
 				<Helmet
@@ -85,7 +86,7 @@ export default class TodoApp extends Component {
               {/* Navbar inner for Index page*/}
               <div data-page="index" className="navbar-inner">
                 {/* We have home navbar without left link*/}
-                <div className="center sliding">MobileApp</div>
+                <div className="center sliding">Touch2S</div>
                 <div className="right">
                   {/* Right link contains only icon - additional "icon-only" class*/}
                   <a href="#" onClick={this.handleLoginDialog.bind(this)} className={"button " + (this.user() ? "active" : "")}>{this.user() ? "Sign Out" : "Sign In"}</a>
@@ -97,12 +98,6 @@ export default class TodoApp extends Component {
                 <div className="left sliding"><a href="#" className="back link"> <i className="icon icon-back"/><span>Back</span></a>
                 </div>
                 <div className="center sliding">About Us</div>
-              </div>
-              {/* Navbar inner for Services page*/}
-              <div data-page="services" className="navbar-inner cached">
-                <div className="left sliding"><a href="#" className="back link"> <i className="icon icon-back"/><span>Back</span></a>
-                </div>
-                <div className="center sliding">Services</div>
               </div>
               {/* Navbar inner for Form page*/}
               <div data-page="form" className="navbar-inner cached">
@@ -122,7 +117,7 @@ export default class TodoApp extends Component {
               <div data-page="about" className="page cached">
                 <div className="page-content">
                   <div className="content-block">
-                    <p>You may go <a href="#" className="back">back</a> or load <a href="#services">Services</a> page.
+                    <p>You may go <a href="#" className="back">back</a> or load <a href="#form">Form</a> page.
                     </p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing
                       mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
@@ -146,36 +141,6 @@ export default class TodoApp extends Component {
                       magna nec ornare. Integer placerat justo sed nunc suscipit facilisis. Vestibulum ac tincidunt
                       augue. Duis eu aliquet mauris, vel luctus mauris. Nulla non augue nec diam pharetra posuere at in
                       mauris.</p>
-                  </div>
-                </div>
-              </div>
-              {/* Services Page*/}
-              <div data-page="services" className="page cached">
-                <div className="page-content">
-                  <div className="content-block">
-                    <p>You may go <a href="#" className="back">back</a> or load <a href="#about">About</a> page.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel commodo massa, eu adipiscing
-                      mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                      Phasellus ultricies dictum neque, non varius tortor fermentum at. Curabitur auctor cursus
-                      imperdiet. Nam molestie nisi nec est lacinia volutpat in a purus. Maecenas consectetur condimentum
-                      viverra. Donec ultricies nec sem vel condimentum. Phasellus eu tincidunt enim, sit amet convallis
-                      orci. Vestibulum quis fringilla dolor. </p>
-                    <p>Mauris commodo lacus at nisl lacinia, nec facilisis erat rhoncus. Sed eget pharetra nunc. Aenean
-                      vitae vehicula massa, sed sagittis ante. Quisque luctus nec velit dictum convallis. Nulla
-                      facilisi. Ut sed erat nisi. Donec non dolor massa. Mauris malesuada dolor velit, in suscipit leo
-                      consectetur vitae. Duis tempus ligula non eros pretium condimentum. Cras sed dolor odio.</p>
-                    <p>Suspendisse commodo adipiscing urna, a aliquet sem egestas in. Sed tincidunt dui a magna
-                      facilisis bibendum. Nunc euismod consectetur lorem vitae molestie. Proin mattis tellus libero, non
-                      hendrerit neque eleifend ac. Pellentesque interdum velit at lacus consectetur scelerisque et id
-                      dui. Praesent non fringilla dui, a elementum purus. Proin vitae lacus libero. Nunc eget lectus non
-                      mi iaculis interdum vel a velit. Nullam tincidunt purus id lacus ornare, at elementum turpis
-                      euismod. Cras mauris enim, congue eu nisl sit amet, pulvinar semper erat. Suspendisse sed mauris
-                      diam.</p>
-                    <p>Nam eu mauris leo. Pellentesque aliquam vehicula est, sed lobortis tellus malesuada facilisis.
-                      Fusce at hendrerit ligula. Donec eu nibh convallis, pulvinar enim quis, lacinia diam. Ut semper ac
-                      magna nec ornare. Integer placerat justo sed nunc suscipit facilisis. Vestibulum ac tincidunt
-                      augue. Duis eu aliquet mauris, vel luctus mauris. Nulla non augue nec diam pharetra posuere at in
-                      mauris. </p>
                   </div>
                 </div>
               </div>

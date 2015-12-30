@@ -1,52 +1,11 @@
 /* CSS declarations go here */
 
-
-header {
-}
-
-#login-buttons {
-  display: block;
-}
-
-h1 {
-}
-
-form {
-}
-
-.newTask input {
-}
-
-.newTask input:focus{
-}
-
-ul {
-}
-
-.delete {
-}
-
-li {
-}
-
-li .text {
-}
-
-li.checked {
-}
-
-li.checked .text {
+.checked {
   text-decoration: line-through;
 }
 
-li.private {
-}
-
-header .hideCompleted {
-}
-
 .togglePrivate {
-  background-color: #EEEEEE;
+  background-color: rgba(160, 175, 194, 0.2);
   font-style: italic;
 }
 

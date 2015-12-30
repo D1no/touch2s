@@ -7,6 +7,7 @@ import TodoList from './components/TodoList';
 import Tasks from 'TodoApp/collections/Tasks';
 import style from './css/TodoApp.import.css';
 
+// Thanks to TrackerReact all our reactive meteor calls render also reactively in react (i.e. user())
 @ReactMixin.decorate(TrackerReact)
 export default class TodoMain extends Component {
 
@@ -73,27 +74,24 @@ export default class TodoMain extends Component {
               toggleHideCompleted={this.handleToggleHideCompleted.bind(this)}
               user={this.user()}
           />
-          <div className="content-block-title">Todo List <span className="badge bg-blue">{this.incompleteCount()}</span></div>
+          <div className="content-block-title">
+            {"Todo's " + (this.user() ? "(" + this.user().username + ") " : "") }
+            <span className="badge">{this.incompleteCount()}</span>
+          </div>
           {content}
-          <div className="content-block-title">What about simple navigation?</div>
+          <div className="content-block-title">Example Pages</div>
           <div className="list-block">
             <ul>
               <li><a href="#about" className="item-link ajax">
                 <div className="item-content">
                   <div className="item-inner">
-                    <div className="item-title">About</div>
-                  </div>
-                </div></a></li>
-              <li><a href="#services" className="item-link ajax">
-                <div className="item-content">
-                  <div className="item-inner">
-                    <div className="item-title">Services</div>
+                    <div className="item-title">Example About Page</div>
                   </div>
                 </div></a></li>
               <li><a href="#form" className="item-link ajax">
                 <div className="item-content">
                   <div className="item-inner">
-                    <div className="item-title">Form</div>
+                    <div className="item-title">Form Elements</div>
                   </div>
                 </div></a></li>
             </ul>
