@@ -64,9 +64,9 @@ export default class TodoApp extends Component {
     return (
       <span className="f7-main">
 				<Helmet
-          title="Todo App"
+          title="Touch2S To-Do"
           meta={[
-            { name: 'description', content: 'This is a Todo application!' }
+            { name: 'description', content: 'Touch2S Meteor F7 Boilerplate' }
           ]}
         />
         {/* Status bar overlay for fullscreen mode*/}
