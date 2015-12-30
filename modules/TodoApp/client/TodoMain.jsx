@@ -36,6 +36,11 @@ export default class TodoMain extends Component {
       taskFilter.checked = {$ne: true};
     }
 
+    // Do not SSR private tasks
+    if(Meteor.isServer) {
+      taskFilter.private = {$ne: true};
+    }
+
     return Tasks.find(taskFilter, {sort: {createdAt: -1}}).fetch();
   }
 
