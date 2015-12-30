@@ -11,7 +11,7 @@ export default class F7 {
     this.options = options ? options : defaultOptions;
 
     // Deal with SSR
-    if(!Instance && Meteor.isClient) {
+    if(!Instance && !Meteor.isServer) {
       Instance = new window.Framework7(this.options);
     }
 

@@ -12,8 +12,8 @@ import style from './css/TodoApp.import.css';
 export default class TodoMain extends Component {
 
   static defaultProps = {
-    subscription: Meteor.isClient ? Meteor.subscribe('tasks') : {ready() {return true} }
-  }
+    subscription: !Meteor.isServer ? Meteor.subscribe('tasks') : {ready() {return true} }
+  };
 
   constructor(props, context) {
     super(props);
@@ -27,7 +27,11 @@ export default class TodoMain extends Component {
   }
 
   user() {
-    return Meteor.user();
+    if(Meteor.isServer) {
+      return false;
+    } else {
+      return Meteor.user();
+    }
   }
 
   tasks() {
@@ -53,7 +57,7 @@ export default class TodoMain extends Component {
   render() {
 
     let content = null;
-    if (Meteor.isClient && !this.props.subscription.ready()) {
+    if (!Meteor.isServer && !this.props.subscription.ready()) {
       // loading
       content = (
       <div className="content-block" style={{textAlign: "center"}}>

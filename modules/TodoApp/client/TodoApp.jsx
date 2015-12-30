@@ -22,11 +22,15 @@ export default class TodoApp extends Component {
   }
 
   user() {
-    return Meteor.user();
+    if(Meteor.isServer) {
+      return false;
+    } else {
+      return Meteor.user();
+    }
   }
 
   loggingIn() {
-    if(Meteor.isClient) {
+    if(!Meteor.isServer) {
       return Meteor.loggingIn();
     } else {
       return false;
@@ -42,7 +46,7 @@ export default class TodoApp extends Component {
   }
 
   componentDidMount() {
-    if(Meteor.isClient) {
+    if(!Meteor.isServer) {
       let app = new F7();
       //this.setState({app: app});
 
