@@ -1,6 +1,6 @@
-# kickstart-simple by thereactivestack
+# Touch2S a Server and Client Side (2S) web app boilerplate
 
-Kickstart a simple project fast!
+Based on kickstart-simple by thereactivestack
 
 If you would like a more sophisticated kickstart with code splitting, see the [kickstart-hugeapp project](https://github.com/thereactivestack/kickstart-hugeapp).
 

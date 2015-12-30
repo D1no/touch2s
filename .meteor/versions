@@ -71,7 +71,7 @@ react-runtime-dev@0.14.4
 react-runtime-prod@0.14.4
 reactive-dict@1.1.3
 reactive-var@1.0.6
-reactrouter:react-router@1.0.2
+reactrouter:react-router@1.0.3
 reactrouter:react-router-ssr@1.0.2_2
 reload@1.1.4
 retry@1.0.4
@@ -85,7 +85,7 @@ srp@1.0.4
 standard-minifiers@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
-thereactivestack:blazetoreact@0.1.3
+thereactivestack:blazetoreact@0.1.5
 tracker@1.0.9
 ui@1.0.8
 ultimatejs:tracker-react@0.0.6

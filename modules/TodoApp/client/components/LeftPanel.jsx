@@ -5,18 +5,18 @@ export default class LeftPanel extends Component {
   render() {
     return (
       <div className="panel panel-left layout-dark panel-reveal">
-        <div className="content-block-title">Kickstart-ReM7</div>
+        <div className="content-block-title">Kickstart-Touch2S</div>
         <div className="content-block">
           <p className>This boilerplate uses Framework7 + React + Meteor + TrackerReact and Webpack as a build tool.</p>
         </div>
-        <div className="content-block-title">Links</div>
+        <div className="content-block-title">Useful Links</div>
         <div className="list-block">
           <ul>
-            <li><a href="#" target="_blank" className="item-link external">
+            <li><a href="http://github.com/d1no/touch2s" target="_blank" className="item-link external">
               <div className="item-content">
                 <div className="item-media"><i className={"icon " + style.githubIcon} /></div>
                 <div className="item-inner">
-                  <div className="item-title">Kickstart-Mobile</div>
+                  <div className="item-title">Fork Touch2S</div>
                 </div>
               </div>
             </a></li>
