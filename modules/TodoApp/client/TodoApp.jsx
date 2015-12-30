@@ -22,11 +22,7 @@ export default class TodoApp extends Component {
   }
 
   user() {
-    if(Meteor.isServer) {
-      return false;
-    } else {
-      return Meteor.user();
-    }
+    return Meteor.user();
   }
 
   loggingIn() {

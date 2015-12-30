@@ -27,11 +27,7 @@ export default class TodoMain extends Component {
   }
 
   user() {
-    if(Meteor.isServer) {
-      return false;
-    } else {
-      return Meteor.user();
-    }
+    return Meteor.user();
   }
 
   tasks() {
@@ -39,6 +35,11 @@ export default class TodoMain extends Component {
 
     if (this.state.hideCompleted) {
       taskFilter.checked = {$ne: true};
+    }
+
+    // Do not SSR private tasks
+    if(Meteor.isServer) {
+      taskFilter.private = {$ne: true};
     }
 
     return Tasks.find(taskFilter, {sort: {createdAt: -1}}).fetch();
