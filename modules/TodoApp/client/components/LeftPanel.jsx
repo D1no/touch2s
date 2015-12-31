@@ -5,7 +5,7 @@ export default class LeftPanel extends Component {
   render() {
     return (
       <div className="panel panel-left layout-dark panel-reveal">
-        <div className="content-block-title">Touch2S v.0.2.1</div>
+        <div className="content-block-title">Touch2S v.0.2.2</div>
         <div className="content-block">
           <p className>This boilerplate uses Framework7 + React + Meteor + TrackerReact and Webpack as a build tool.</p>
         </div>
