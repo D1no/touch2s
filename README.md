@@ -1,6 +1,6 @@
-[Touich2S Live Demo](http://touch2s.meteor.com). A sister of the [kickstart-simple]( https://github.com/thereactivestack/kickstart-simple) & [hugeapp]( https://github.com/thereactivestack/kickstart-hugeapp) project by The Reactive Stack.
+**[Touich2S Live Demo](http://touch2s.meteor.com)**. A sister of the [kickstart-simple]( https://github.com/thereactivestack/kickstart-simple) & [hugeapp]( https://github.com/thereactivestack/kickstart-hugeapp) project by The Reactive Stack.
 
-# Touch2S: Mobile Client & Server Side (✌️S)
+### Touch2S: Mobile Apps that Server Side Render (✌️S)
 
 Touch2S is a [Meteor](http://meteor.com), [React](https://facebook.github.io/react/index.html) and [Framework7](http://www.idangero.us/framework7/)-Mobile WebApp-Stack based on the [kickstart projects by thereactivestack](https://github.com/thereactivestack/kickstart). Remarkable is the use of webpack for chunking and the ability to render both on the server and the client. Hence, 2 Side-Rendering... 🤔 *Touch2S*. This approach enables very **low initial load times** while being **reactive** (Meteor) and extremely **responsive** (React's Virtual DOM meets Framework7)! 
 
