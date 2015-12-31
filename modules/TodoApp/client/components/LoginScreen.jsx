@@ -151,7 +151,7 @@ export default class LoginScreen extends Component {
         <div className="view">
           <div className="page">
             <div className="page-content login-screen-content">
-              <div className="login-screen-title">{this.props.user ? "Hi " + this.props.user.username + "!" : "Login to TouchS2"}</div>
+              <div className="login-screen-title">{this.props.user ? "Hi " + this.props.user.username + "!" : "Login to Touch2S"}</div>
               <form onSubmit={this.handleAuth.bind(this)} >
                 <div className="list-block">
                   {loginForm}
