@@ -73,8 +73,7 @@ export default class TodoItem extends Component {
           {togglePrivate}
           <a href="#" className="bg-red"
              style={{}}
-             onClick={this.handleDelete.bind(this)}>
-            {this.props.user ? "Delete" : "Sign In First"}</a>
+             onClick={this.handleDelete.bind(this)}>Delete</a>
         </div>
       </li>
     );
