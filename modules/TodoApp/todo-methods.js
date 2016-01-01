@@ -8,7 +8,7 @@ Meteor.methods({
     }
 
     Tasks.insert({
-      text: text,
+      text: text.replace(/([^a-z0-9]+)/gi, '-'),
       createdAt: new Date(),
       owner: Meteor.userId(),
       username: Meteor.user().username
