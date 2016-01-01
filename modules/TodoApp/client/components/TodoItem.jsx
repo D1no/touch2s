@@ -39,7 +39,9 @@ export default class TodoItem extends Component {
     let togglePrivate = null;
     if(this.props.user && this.props.user.username === this.props.task.username) {
       togglePrivate = (
-        <a href="#" className="bg-blue" style={{}} onClick={this.handleSetPrivate.bind(this)}>
+        <a href="#" className="bg-blue"
+           style={{}}
+           onClick={this.handleSetPrivate.bind(this)}>
           {this.props.task.private ? 'Make Public' : 'Make Private'}
         </a>
       )
@@ -69,7 +71,10 @@ export default class TodoItem extends Component {
         </div>
         <div className="swipeout-actions-right">
           {togglePrivate}
-          <a href="#" className="swipeout-delete" style={{}} onClick={this.handleDelete.bind(this)}>Delete</a>
+          <a href="#" className="bg-red"
+             style={{}}
+             onClick={this.handleDelete.bind(this)}>
+            {this.props.user ? "Delete" : "Sign In First"}</a>
         </div>
       </li>
     );
