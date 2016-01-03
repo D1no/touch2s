@@ -1,6 +1,3 @@
-// Import Framework7
-import "TodoApp/client/f7/less/ios/framework7.ios.less";
-import "TodoApp/client/f7/less/ios/framework7.ios.colors.less";
 /* Framework7 Custom Build
  * Framework7 comes with an own router and state management which would conflict with react router. So we need to excl.
  * it. Luckily we can do that very simple by doing this with the master repo:
@@ -10,8 +7,6 @@ import "TodoApp/client/f7/less/ios/framework7.ios.colors.less";
  */
 // add *.es5.js so the file so meteor ecmascript package ignores this (huge) file.
 import "TodoApp/client/f7/js/framework7.custom.es5.js";
-
-import "TodoApp/client/f7/less/my-app.less";
 
 // Methods for optimistic updates
 import 'TodoApp/todo-methods';
