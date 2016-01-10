@@ -50,9 +50,6 @@ Meteor.setInterval(function() {
   botAnnoyed = true;
   console.log("Demo: Bot is annoyed by tasks count");
 
-  const username = Meteor.settings.demo.username;
-  const password = Meteor.settings.demo.password;
-
   let user = Meteor.users.findOne({username: username});
   let userId;
 
