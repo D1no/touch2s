@@ -15,6 +15,8 @@ Clone this project to start a mobile web project using Meteor, React.js, Framewo
 1. `cd touch2s`
 1. `meteor`
 
+*Note*: In some cases, your local node version needs to match meteors internal node version (LTS v.10.40). If you run into errors on first build, please use a tool such as `n` [link](https://github.com/tj/n) to conveniently switch to `node v0.10.40`. Keep in mind, that the first build can take quite a while (even appear to be frozen) because `meteor-webpack` needs to pull in npm. This will change with the upcoming [Meteor 1.3 release](https://github.com/meteor/meteor/milestones/Release%201.3).
+
 ### The stack & features (similar to kickstart-simple)
 - Framework7 (new in Touch2S)
 - Use [TrackerReact]( https://github.com/ultimatejs/tracker-react) (new in Touch2S)
